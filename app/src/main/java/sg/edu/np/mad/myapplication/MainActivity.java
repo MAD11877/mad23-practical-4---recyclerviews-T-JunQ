@@ -21,10 +21,9 @@ public class MainActivity extends AppCompatActivity {
 
         TextView name = findViewById(R.id.username);
         Intent listEnd = getIntent();
-        name.setText(listEnd.getStringExtra("name"));
+        User user = (User)listEnd.getSerializableExtra("ViewUser");
+        name.setText(user.name);
         Intent messageGroup = new Intent(MainActivity.this,MessageGroup.class);
-
-        User user = new User();
         Button follow = findViewById(R.id.follow);
         if (user.followed)
         {
@@ -54,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(messageGroup);
             }
         });
-
     }
 }
 
